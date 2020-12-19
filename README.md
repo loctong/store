@@ -1,2 +1,2 @@
 # store
-Everyday i learned
+Everyday I learned
