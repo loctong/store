@@ -36,6 +36,7 @@ const loadAll = function() {
 
 
 module.exports = {
-    add: add
+    add: add,
+    loadAll: loadAll
 }
 

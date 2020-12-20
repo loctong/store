@@ -3,6 +3,15 @@ const yargs = require('yargs');
 
 // Customize yargs version
 yargs.version('1.1.0')
+// Create list command
+yargs.command({
+    command: 'list',
+    describe: 'List',
+    handler: function (argv){
+        console.log(noteApi.loadAll());
+    }
+    
+})
 
 // Create add command
 yargs.command({
