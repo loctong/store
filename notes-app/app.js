@@ -33,7 +33,7 @@ yargs.command({
         }
     },
     handler: function (){
-        console.log('add commands')
+        console.log('add commands');
     }
 })
 
