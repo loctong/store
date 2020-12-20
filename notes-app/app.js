@@ -1,27 +1,10 @@
-// TODO how to use import
-//import validator from 'validator';
-// import from own files
-const add1 = require('./utils');
-
-const getNotes = require('./notes');
-// import from npm
-const validator = require('validator');
-const chalk = require('chalk');
-// import from core module
-const fileSystem = require('fs');
-
+const noteApi = require('./notes');
 const yargs = require('yargs');
 
-// const fs = require('fs');
+// Customize yargs version
+yargs.version('1.1.0')
 
-// fs.appendFileSync('notes.txt', '1');
-
-// console.log(add1(1, 2));
-
-console.log(chalk.bgRed(getNotes()))
-
-console.log(validator.isEmail('sdsd@@sdss2d.vn'))
-
+// Create add command
 yargs.command({
     command: 'add',
     describe : 'Add ',
@@ -30,15 +13,16 @@ yargs.command({
             describe: 'Note ',
             demandOption: true,
             type: 'string'
+        }, 
+        body: {
+            describe: 'Body',
+            demandOption: true,
+            type: 'string'
         }
     },
-    handler: function (){
-        console.log('add commands');
+    handler: function (argv){
+        noteApi.add(argv.title, argv.body);
     }
 })
 
-// 20/12/2020
-// const params = process.argv;
-// console.log(params)
-// yargs.version('1.1.0')
-console.log(yargs.argv)
+yargs.parse()

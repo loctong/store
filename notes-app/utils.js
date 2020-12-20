@@ -1,4 +1,3 @@
-console.log('utils.')
 
 const name = 'Hello name'
 
