@@ -2,7 +2,7 @@ const fileStream = require('fs')
 const chalk = require('chalk')
 const notesDb = 'notes_db.json'
 
-const add = function (title, body) {
+const add = (title, body) => {
     const datas = loadAll();
 
     if (checkDuplicate(title, datas)) {
@@ -17,16 +17,16 @@ const add = function (title, body) {
     }
 }
 
-const checkDuplicate = function (title, datas) {
+const checkDuplicate = (title, datas) => {
     // if no value , undefined is returned
     return datas.find(x => x.title == title);
 }
 
-const save = function (datas) {
+const save = (datas) => {
     fileStream.writeFileSync(notesDb, JSON.stringify(datas))
 }
 
-const loadAll = function () {
+const loadAll = () => {
     try {
         return JSON.parse(fileStream.readFileSync(notesDb))
     } catch (e) {
@@ -34,7 +34,7 @@ const loadAll = function () {
     }
 }
 
-const remove = function (title) {
+const remove = (title) => {
     const datas = loadAll();
 
     if (checkDuplicate(title, datas)) {
